@@ -1,32 +1,33 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;  
 
 public class StartGUI {
     private JButton btnStart;
     private JButton btnExit;
+
+    private ImageIcon iconStartClick;
+    private ImageIcon iconExitClick;
+    private ImageIcon iconStartImage;
+    private ImageIcon iconExitImage;
+
     
     public StartGUI(){
         initVariable();
     }
 
     public void initVariable(){
-        BufferedImage iconStart;
-        BufferedImage iconExit;
-        try {
-            iconStart = ImageIO.read(new File("asset/button/Start-Button.png"));
-            Image iconStartImage = iconStart.getScaledInstance(200, 100, Image.SCALE_DEFAULT);
-            iconExit = ImageIO.read(new File("asset/button/Exit-Button.png"));
-            Image iconExitImage = iconExit.getScaledInstance(200, 100, Image.SCALE_DEFAULT);
-            btnStart = new JButton(new ImageIcon(iconStartImage));
-            btnExit = new JButton(new ImageIcon(iconExitImage));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            
+            // iconExitImage = iconExit.getScaledInstance(200, 100, Image.SCALE_DEFAULT);
+        iconExitImage = new ImageIcon(new ImageIcon("asset/button/Exit-Button.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        iconExitClick = new ImageIcon(new ImageIcon("asset/button/Exit-Button-Click.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        iconStartImage = new ImageIcon(new ImageIcon("asset/button/Start-Button.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        iconStartClick = new ImageIcon(new ImageIcon("asset/button/Start-Button-Click.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+
+        btnStart = new JButton("");
+        btnExit = new JButton("");
+
+        btnStart.setIcon(iconStartImage);
+        btnExit.setIcon(iconExitImage);
     }
 
     public JButton getStartButton(){
@@ -36,4 +37,21 @@ public class StartGUI {
     public JButton getExistButton(){
         return btnExit;
     }
+
+    public ImageIcon getIconStartClick() {
+        return iconStartClick;
+    }
+
+    public ImageIcon getIconExitClick() {
+        return iconExitClick;
+    }
+
+    public Icon getIconStartImage() {
+        return iconStartImage;
+    }
+
+    public Icon getIconExitImage() {
+        return iconExitImage;
+    }
+
 }
